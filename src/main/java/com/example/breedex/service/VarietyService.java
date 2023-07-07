@@ -1,25 +1,24 @@
 package com.example.breedex.service;
 
-import com.example.breedex.model.Varieties;
+import com.example.breedex.model.Variety;
 
 import java.util.List;
-import java.util.Optional;
 
-public interface VarietiesService {
+public interface VarietyService {
 
     /*
   raczej będzie nieużywana
-    List<Varieties> getAllVarieties();
+    List<Variety> getAllVarieties();
 
    */
 
-    Varieties saveVariety(Varieties variety);
+    Variety saveVariety(Variety variety);
 
-    Optional<Varieties> getVarietyById(Long id);
+    Variety getVarietyById(Long id);
 
     void deleteVarietyById(Long id);
 
-    List<Varieties> clientHousesList(Long varietyId);
+    List<Variety> breedVarietiesList(Long varietyId);
 
     void removeVarietyFromBreed(Long id);
 }

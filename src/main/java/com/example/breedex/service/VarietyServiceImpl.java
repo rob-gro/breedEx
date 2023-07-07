@@ -1,44 +1,62 @@
 package com.example.breedex.service;
 
-import com.example.breedex.model.Varieties;
-import com.example.breedex.repository.VarietiesRepository;
+import com.example.breedex.model.Breed;
+import com.example.breedex.model.Variety;
+import com.example.breedex.repository.VarietyRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
-public class VarietiesServiceImpl implements VarietiesService{
+public class VarietyServiceImpl implements VarietyService {
 
-    private final VarietiesRepository varietiesRepository;
+    private final VarietyRepository varietyRepository;
 
-    public VarietiesServiceImpl(VarietiesRepository varietiesRepository) {
-        this.varietiesRepository = varietiesRepository;
+    public VarietyServiceImpl(VarietyRepository varietyRepository) {
+        this.varietyRepository = varietyRepository;
     }
 
     @Override
-    public Varieties saveVariety(Varieties variety) {
-        return varietiesRepository.save(variety);
+    public Variety saveVariety(Variety variety) {
+        return varietyRepository.save(variety);
     }
 
     @Override
-    public Optional<Varieties> getVarietyById(Long id) {
-        return varietiesRepository.findById(id);
+    public Variety getVarietyById(Long id) {
+        Optional<Variety> varietiesOptional = varietyRepository.findById(id);
+        return varietiesOptional.orElseThrow(()-> new NoSuchElementException("Variety not found with ID: " + id));
     }
 
     @Override
     public void deleteVarietyById(Long id) {
-        varietiesRepository.deleteById(id);
+
+        Variety variety = getVarietyById(id);
+
+        if (variety != null) {
+            List<Breed> breedVariety = (List<Breed>) getVarietyById(id);
+            if (breedVariety != null) {
+                for (Breed breed : breedVariety) {
+                    breed.setVarietyName(null);
+                }
+            }
+            varietyRepository.delete(variety);
+        }
     }
 
     @Override
-//    public List<Varieties> clientHousesList(Long clientId) {
-    public List<Varieties> breedVarietiesList(Long clientId) {
-        return null;
+    public List<Variety> breedVarietiesList(Long breedId) {
+        return varietyRepository.findAllByBreedId(breedId);
     }
 
     @Override
     public void removeVarietyFromBreed(Long id) {
+        Variety variety = getVarietyById(id);
+        if (variety != null) {
+            variety.setBreed(null);
+            varietyRepository.save(variety);
+        }
 
     }
 }

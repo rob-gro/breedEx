@@ -3,24 +3,24 @@ package com.example.breedex.model;
 import jakarta.persistence.*;
 
 @Entity
-public class Varieties {
+public class Variety {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String varietiesName;
+    private String varietyName;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "breed_id", referencedColumnName = "id")
     private Breed breed;
 
-    public Varieties(Long id, String varietiesName, Breed breed) {
+    public Variety(Long id, String varietyName, Breed breed) {
         this.id = id;
-        this.varietiesName = varietiesName;
+        this.varietyName = varietyName;
         this.breed = breed;
     }
 
-    public Varieties() {
+    public Variety() {
     }
 
     public Long getId() {
@@ -31,12 +31,12 @@ public class Varieties {
         this.id = id;
     }
 
-    public String getVarietiesName() {
-        return varietiesName;
+    public String getVarietyName() {
+        return varietyName;
     }
 
-    public void setVarietiesName(String varietiesName) {
-        this.varietiesName = varietiesName;
+    public void setVarietyName(String varietyName) {
+        this.varietyName = varietyName;
     }
 
     public Breed getBreed() {
@@ -49,9 +49,9 @@ public class Varieties {
 
     @Override
     public String toString() {
-        return "Varieties{" +
+        return "Variety{" +
                 "id=" + id +
-                ", varietiesName='" + varietiesName + '\'' +
+                ", varietiesName='" + varietyName + '\'' +
                 ", breed=" + breed +
                 '}';
     }

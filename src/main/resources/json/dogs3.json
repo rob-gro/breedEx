@@ -1,0 +1,54 @@
+[
+  {
+    "breedName": "affenpinscher",
+    "varietyName": []
+  },
+  {
+    "breedName": "beagle",
+    "varietyName": []
+  },
+  {
+    "breedName": "boxer",
+    "varietyName": []
+  },
+  {
+    "breedName": "bulldog",
+    "varietyName": ["boston", "french"]
+  },
+  {
+    "breedName": "bull terrier",
+    "varietyName": ["staffordshire"]
+  },
+  {
+    "breedName": "chihuahua",
+    "varietyName": []
+  },
+  {
+    "breedName": "collie",
+    "varietyName": ["border"]
+  },
+  {
+    "breedName": "corgi",
+    "varietyName": ["cardigan"]
+  },
+  {
+    "breedName": "dingo",
+    "varietyName" : []
+  },
+  {
+    "breedName": "mastiff",
+    "varietyName" : ["bull", "tibetan"]
+  },
+  {
+    "breedName": "schnauzer",
+    "varietyName" : ["giant", "miniature"]
+  },
+  {
+    "breedName": "wilczur",
+    "varietyName": "nizinny"
+  },
+  {
+    "breedName": "jamnior",
+    "varietyName": ["pomorski", "piastowski", "góralski"]
+  }
+]
