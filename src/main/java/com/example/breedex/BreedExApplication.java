@@ -26,7 +26,7 @@ public class BreedExApplication {
     @Bean
     CommandLineRunner runner(BreedService breedService) {
         return args -> {
-            // read json and write to db
+
             ObjectMapper mapper = new ObjectMapper();
             TypeReference<List<Breed>> typeReference = new TypeReference<List<Breed>>() {
             };
@@ -47,11 +47,20 @@ public class BreedExApplication {
   },
  */
 
+                for (Breed breed : breedsList) {
+                    List<Variety> varietyList = new ArrayList<>();
+                    Variety variety = new Variety();
+                    variety.setVarietyName(breed.getBreedName(variety.setVarietyName()));
+                    varietyList.add(variety);
+                }
+                breedService.save(breedsList);
+                System.out.println(" ******* Breeds Saved! ******* ");
 
 //                for(Breed breed : breedsList) {
+//                    breed.getVarietyName();
 //                    List<Variety> varietyList = new ArrayList<>();
 //                    Variety variety = new Variety();
-//                    variety.setVarietiesName(breed.getBreedName(variety.getVarietiesName()));
+//                    variety.setVarietyName();
 //                    varietyList.add(variety);
 //                }
 //                breedService.save();
@@ -92,65 +101,71 @@ Cannot invoke "java.util.List.iterator()" because the return value of "com.examp
  at [Source: (BufferedInputStream); line: 16, column: 21]
  (through reference chain: java.util.ArrayList[3]->com.example.breedex.model.Breed["varietyName"]->java.util.ArrayList[0])
   */
+//
+//                for (Breed breed : breedsList) {
+//                    List<Variety> varieties = new ArrayList<>();
+//                    for (Variety variety : breed.getVarietyName()) {
+//                        variety = new Variety();
+//                        if (variety.getVarietyName() == null) {
+//                            variety.getVarietyName();
+//                        }
+//                        variety.getVarietyName();
+//                        varieties.add(variety);
+//                    }
+//                    breed.setVarietyName(varieties);
+//                    breedService.save(breedsList);
+//                }
 
-                for (Breed breed : breedsList) {
-                    List<Variety> varieties = new ArrayList<>();
-                    for (Variety variety : breed.getVarietyName()) {
-                        variety = new Variety();
-                        if (variety.getVarietyName() == null) {
-                            variety.getVarietyName();
-                        }
-                        variety.getVarietyName();
-                        varieties.add(variety);
-                    }
-                    breed.setVarietyName(varieties);
-                    breedService.save(breedsList);
-                }
 
-
-
+/*
+4
+wywala błąd jak wyżej
+ */
 //                for (Breed breed : breedsList) {
 //                    List<Variety> varieties = new ArrayList<>();
 //                    if (breed.getVarietyName() != null) {
 //                        for (Variety variety : breed.getVarietyName()) { //  Required type:String, Provided:Variety
-//                            Variety variety = new Variety();
-//                            if (varietyName == null) {
-//                                varietyName = "null";
-//                            }
-//                            variety.setVarietyName(varietyName);
+//
+//                            if (variety != null) {
+//                                variety = new Variety();
+//
+//                            variety.setVarietyName(variety.getVarietyName());
 //                            varieties.add(variety);
 //                        }
 //                    }
 //                    breed.setVarietyName(varieties);
-//                    breedService.save(breed);
+//                    breedService.save(breedsList);
+//                }
+/*
 
-/*  3
+5
+jak użyję IF to nie wykonuje pętli, bo dalej jest już NULL + a teraz zmienił się błąd
+        "no String-argument constructor/factory method to deserialize from String value .... "
+*/
 
-jak użyję IF to nie wykonuje pętli, bo dalej jest już NULL
+//                for (Breed breed : breedsList) {
+//                    List<Variety> varieties = new ArrayList<>();
+//
+//                    if (breed.getVarietyName() != null) {
+//
+//                        for (Variety varietyName : breed.getVarietyName()) {
+//                            Variety variety = new Variety();
+//                            variety.setVarietyName(String.valueOf(varietyName));
+//                            varieties.add(variety);
+//                        }
+//                        breed.setVarietyName(varieties);
+//                        breedService.save(breedsList);
+//                    }
+//                }
 
-                for (Breed breed : breedsList) {
-                    List<Variety> varieties = new ArrayList<>();
 
-                    if (breed.getVarietyName() != null) {
-
-                        for (Variety varietyName : breed.getVarietyName()) {
-                            Variety variety = new Variety();
-                            variety.setVarietiesName(String.valueOf(varietyName));
-                            varieties.add(variety);
-                        }
-                        breed.setVarietyName(varieties);
-                        breedService.save(breedsList);
-                    }
-                }
-
-   */
-                System.out.println(" ******* Breeds Saved! ******* ");
             } catch (IOException e) {
                 System.out.println("****** Unable to save breeds: " + e.getMessage() + " *******");
             }
-
+            System.out.println(" ******* Breeds Saved! ******* ");
         };
     }
+}
 
 //    Function<ArrayNode, List<String>> extractValues = (node) ->
 //            StreamSupport.stream(node.spliterator(), false)
@@ -165,5 +180,3 @@ jak użyję IF to nie wykonuje pętli, bo dalej jest już NULL
 //            }
 //        }
 //    }
-
-}
