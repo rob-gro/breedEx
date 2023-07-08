@@ -1,0 +1,113 @@
+
+:root {
+    /*--main-bg-color: #ffc008;*/
+    --my-yellow: #ffc008;
+    --my-grey: #6c757d;
+    --my-red:#dc3545;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.2;
+   background-color: transparent;
+    color: chartreuse;
+
+    /*color: #ffc008;*/
+    border-radius: 10px;
+    border-color: #ffc008;
+    padding: 10px;
+    margin: 0.7%;
+    /*background-color: rgb(24,28,31);*/
+}
+
+
+body {
+    background-color: rgb(24,28,31);
+}
+
+
+h1,h2,h3,h4,h5 {
+    color: var(--my-grey);
+    align-content: center;
+    margin-top: 1%;
+    margin-bottom: 2%;
+}
+
+.form-select {
+    background-color: transparent;
+    color: var(--my-yellow);
+    border-color: var(--my-yellow);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.nav-button {
+    color: #ffc008;
+    border-radius: 10px;
+    border-color: #ffc008;
+    padding: 10px;
+    margin: 0.7%;
+    background-color: rgb(24,28,31);
+    transition-duration: 0.4s;
+}
+.nav-button:hover {
+    color: black;
+    background-color: #ffc008;
+}
+.nav-button:active {
+    color: black;
+    background-color: #ffc008;
+    -webkit-box-shadow: 0px 0px 4px 1px rgba(245, 231, 71, 0.9);
+    -moz-box-shadow: 0px 0px 4px 1px rgba(245, 231, 71, 0.9);
+    box-shadow: 0px 0px 4px 1px rgba(245, 231, 71, 0.9);
+}
+
+.edit-button {
+    color: #ffc008;
+    border-radius: 10px;
+    border-color: #ffc008;
+    padding: 10px;
+    margin: 0.7%;
+    background-color: transparent;
+    transition-duration: 0.4s;
+}
+
+.edit-button:hover {
+    color: black;
+    background-color: #ffc008;
+}
+
+.del-button:hover {
+    color: #faf8e7;
+    background-color: var(--my-red);
+}
+
+.del-button {
+    color: var(--my-red);
+    border-radius: 10px;
+    border-color: var(--my-red);
+    padding: 10px;
+    margin: 0.7%;
+    background-color: transparent;
+    transition-duration: 0.4s;
+}
+
+.exit-button {
+    color: #c714a2;
+    border-radius: 10px;
+    border-color: #c714a2;
+    padding: 10px;
+    margin: 0.7%;
+    background-color: transparent;
+    transition-duration: 0.4s;
+}
+
+.exit-button:hover {
+    color: white;
+    border-radius: 10px;
+    border-color: #c714a2;
+    padding: 10px;
+    margin: 0.7%;
+    background-color: #c714a2;
+    transition-duration: 0.4s;
+}

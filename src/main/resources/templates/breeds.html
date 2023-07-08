@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" type="text/css"/>
+    <link rel="stylesheet" href="/style.css"/>
+
+    <title>Breed</title>
+
+</head>
+
+<body>
+<div class="container my-auto mx-auto">
+
+    <h1>List of Breeds</h1>
+
+    <div class="container my-1">
+        <button type="button" class="nav-button" onclick="window.location.href='/breeds/new';">Add New Breed</button>
+    </div>
+
+    <div class="container my-1">
+        <table th:border="4" th:cellpadding="10"
+               class="table table-bordered text-center table-dark table-striped text-nowrap">
+            <thead class="my-auto mx-auto col-form-label text-warning">
+            <th>Breed's name</th>
+            <th>Variety's Name</th>
+            <th>Actions</th>
+            </thead>
+
+            <tbody class="text-light">
+            <th:block th:each="breed : ${breedList}">
+                <tr>
+                    <td th:text="${breed.breedName}"></td>
+
+                    <td>
+                        <span th:if="${#lists.isEmpty(breed.varietyName)}"> - - - </span>
+                        <span th:each="variety, iter : ${breed.varietyName}">
+                            <span th:text="${variety}"></span>
+                            <span th:unless="${iter.last}">/</span>
+                        </span>
+                    </td>
+
+
+
+                    <td>
+
+                        <button type="submit" class="btn btn-outline-info btn-sm">+ New Variety</button>
+                        <button type="button" class="btn btn-outline-warning btn-sm">Edit</button>
+
+                        <a class="btn btn-outline-danger btn-sm"> Delete </a>
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

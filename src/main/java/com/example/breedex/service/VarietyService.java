@@ -12,6 +12,7 @@ public interface VarietyService {
 
    */
 
+    List<Variety> getAllVarieties();
     Variety saveVariety(Variety variety);
 
     Variety getVarietyById(Long id);

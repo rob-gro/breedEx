@@ -16,12 +16,11 @@ public class Breed {
     private String breedName;
 
     @OneToMany(mappedBy = "breed")
-    List<Variety> varietyName;
+    List<Variety> variety;
 
-    public Breed(Long id, String breedName, List<Variety> varietyName) {
+    public Breed(Long id, String breedName) {
         this.id = id;
         this.breedName = breedName;
-        this.varietyName = varietyName;
     }
 
     public Breed() {
@@ -43,12 +42,12 @@ public class Breed {
         this.breedName = breedName;
     }
 
-    public List<Variety> getVarietyName() {
-        return varietyName;
+    public List<Variety> getVariety() {
+        return variety;
     }
 
-    public void setVarietyName(List<Variety> varietyName) {
-        this.varietyName = varietyName;
+    public void setVariety(List<Variety> variety) {
+        this.variety = variety;
     }
 
     @Override
@@ -56,7 +55,7 @@ public class Breed {
         return "Breed{" +
                 "id=" + id +
                 ", breedName='" + breedName + '\'' +
-                ", varietyName=" + varietyName +
                 '}';
     }
+
 }

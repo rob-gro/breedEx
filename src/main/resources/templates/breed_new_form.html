@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+
+  <!--    added bootstrap  -->
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" type="text/css"/>
+  <link rel="stylesheet" href="/style.css"/>
+
+  <title>New Breed's Form</title>
+
+</head>
+
+<body>
+<div class="container my-3">
+  <div><h1 class="text-secondary align-content-center">Provide details of the new breed</h1></div>
+
+  <div class="container my-1">
+    <button type="button" class="nav-button" onclick="window.location.href='/';">Back to Main Page</button>
+  </div>
+
+  <form th:action="@{/breeds/save}" th:object="${breed}" method="post"
+        style="max-width: 600px; margin: 0 auto;">
+
+    <!--  below verse is a protection against "add" to DB instead of "edit" -->
+    <input type="hidden" th:field="*{id}" th:value="${breed.id}"/>
+
+    <div class="m-12">
+
+      <div class="form-group row">
+        <label class="col-form-label col-sm-4 text-warning">Breed Name</label>
+        <div class="col-sm-8">
+
+<!--          <input type="text" th:field="*{}" class="form-control">-->
+
+<!--          <input type="text" th:value="${#lists.isEmpty(breed.varietyName) ? '' : breed.varietyName[0].getVarietyName()}"-->
+<!--                 name="varietyName" class="form-control">-->
+
+<!--          "${#lists.isEmpty(breed.varietyName) ? *{varietyName} : *{varietyName[0]}}"-->
+
+
+
+        </div>
+      </div>
+      <br>
+
+
+      <br>
+      <br>
+    </div>
+    <div class="container my-1">
+
+    </div>
+
+    <div class="form-group row">
+      <label class="col-form-label col-sm-4 text-warning">Variety Name</label>
+      <div class="col-sm-8">
+<!--        <input type="text" th:field="*{}" class="form-control">-->
+      </div>
+    </div>
+    <br>
+
+<!--    <div id="additionalVarieties"></div>-->
+<!--    <button type="button" class="btn btn-primary" onclick="addVariety()">Add Variety</button>-->
+
+<!--    <script>-->
+<!--      function addVariety() {-->
+<!--        var varietiesDiv = document.getElementById("additionalVarieties");-->
+<!--        var newVarietyDiv = document.createElement("div");-->
+<!--        newVarietyDiv.classList.add("form-group", "row");-->
+
+<!--        var labelDiv = document.createElement("label");-->
+<!--        labelDiv.classList.add("col-form-label", "col-sm-4", "text-warning");-->
+<!--        labelDiv.innerText = "Variety Name";-->
+
+<!--        var inputDiv = document.createElement("div");-->
+<!--        inputDiv.classList.add("col-sm-8");-->
+
+<!--        var inputField = document.createElement("input");-->
+<!--        inputField.setAttribute("type", "text");-->
+<!--        inputField.setAttribute("class", "form-control");-->
+<!--        inputField.setAttribute("required", "");-->
+
+<!--        inputDiv.appendChild(inputField);-->
+<!--        newVarietyDiv.appendChild(labelDiv);-->
+<!--        newVarietyDiv.appendChild(inputDiv);-->
+<!--        varietiesDiv.appendChild(newVarietyDiv);-->
+<!--      }-->
+<!--    </script>-->
+
+
+<!--    <div class="form-group row">-->
+<!--      <label class="col-form-label col-sm-4 text-warning">Client's Phone no.</label>-->
+<!--      <div class="col-sm-8">-->
+<!--        <input type="text" th:field="*{client.phoneNumber}" class="form-control" required>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <br>-->
+
+<!--    <div class="form-group row">-->
+<!--      <label class="col-form-label col-sm-4 text-warning">Client's Email</label>-->
+<!--      <div class="col-sm-8">-->
+<!--        <input type="text" th:field="*{client.email}" class="form-control" required>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <br>-->
+
+    <br>
+    <div class="text-center p-3">
+      <button type="submit" class="btn btn-outline-info">Save</button>
+    </div>
+  </form>
+
+</div>
+</body>
+</html>

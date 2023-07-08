@@ -2,29 +2,51 @@ package com.example.breedex.controller;
 
 import com.example.breedex.model.Breed;
 import com.example.breedex.service.BreedService;
+import com.example.breedex.service.VarietyService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
-@RestController
-@RequestMapping("/breeds")
+@Controller
 public class BreedController {
 
     private final BreedService breedService;
+    private final VarietyService varietyService;
 
-    public BreedController(BreedService breedService) {
+    public BreedController(BreedService breedService, VarietyService varietyService) {
         this.breedService = breedService;
+        this.varietyService = varietyService;
     }
 
-    @GetMapping("/list")
-    public Iterable<Breed> getAllBreeds() {
-        return breedService.getAllBreeds();
+    @RequestMapping("/")
+    public String getAllBreeds(Model model) {
+        model.addAttribute("breedList", breedService.getAllBreeds());
+        return "breeds";
     }
 
-    @GetMapping("/all")
-    public String findAll() {
-        return breedService.findAll().toString();
+    @GetMapping("/breeds/new")
+    public String newBreed(Model model) {
+        model.addAttribute("breed", new Breed());
+        return "breed_new_form";
+    }
+
+    @GetMapping("/breed/{id}/edit")
+    public String editBreed(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("breed", breedService.getBreedById(id));
+        return "breed_edit_form";
+    }
+
+
+    @PostMapping("/breeds/save")
+    public String saveBreed(@ModelAttribute Breed breed) {
+        breedService.saveBreed(breed);
+        return "breeds";
+    }
+
+    @GetMapping("breed/{id}/delete")
+    public String deleteBreed(@PathVariable("id") Long id) {
+        breedService.deleteBreedById(id);
+        return "redirect:/breeds";
     }
 }
 

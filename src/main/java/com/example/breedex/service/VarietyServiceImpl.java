@@ -19,8 +19,13 @@ public class VarietyServiceImpl implements VarietyService {
     }
 
     @Override
-    public Variety saveVariety(Variety variety) {
-        return varietyRepository.save(variety);
+    public List<Variety> getAllVarieties() {
+        return varietyRepository.findAll();
+    }
+
+    @Override
+    public List<Variety> breedVarietiesList(Long breedId) {
+        return varietyRepository.findAllByBreedId(breedId);
     }
 
     @Override
@@ -28,6 +33,13 @@ public class VarietyServiceImpl implements VarietyService {
         Optional<Variety> varietiesOptional = varietyRepository.findById(id);
         return varietiesOptional.orElseThrow(()-> new NoSuchElementException("Variety not found with ID: " + id));
     }
+
+
+    @Override
+    public Variety saveVariety(Variety variety) {
+        return varietyRepository.save(variety);
+    }
+
 
     @Override
     public void deleteVarietyById(Long id) {
@@ -38,17 +50,14 @@ public class VarietyServiceImpl implements VarietyService {
             List<Breed> breedVariety = (List<Breed>) getVarietyById(id);
             if (breedVariety != null) {
                 for (Breed breed : breedVariety) {
-                    breed.setVarietyName(null);
+                    breed.setVariety(null);
                 }
             }
             varietyRepository.delete(variety);
         }
     }
 
-    @Override
-    public List<Variety> breedVarietiesList(Long breedId) {
-        return varietyRepository.findAllByBreedId(breedId);
-    }
+
 
     @Override
     public void removeVarietyFromBreed(Long id) {

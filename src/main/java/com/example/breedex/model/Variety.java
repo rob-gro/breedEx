@@ -14,10 +14,9 @@ public class Variety {
     @JoinColumn(name = "breed_id", referencedColumnName = "id")
     private Breed breed;
 
-    public Variety(Long id, String varietyName, Breed breed) {
+    public Variety(Long id, String varietyName) {
         this.id = id;
         this.varietyName = varietyName;
-        this.breed = breed;
     }
 
     public Variety() {
@@ -51,8 +50,9 @@ public class Variety {
     public String toString() {
         return "Variety{" +
                 "id=" + id +
-                ", varietiesName='" + varietyName + '\'' +
+                ", varietyName='" + varietyName + '\'' +
                 ", breed=" + breed +
                 '}';
     }
+
 }
