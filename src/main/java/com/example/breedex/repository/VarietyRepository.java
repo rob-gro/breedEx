@@ -8,4 +8,6 @@ import java.util.List;
 public interface VarietyRepository extends JpaRepository<Variety, Long> {
 
     List<Variety> findAllByBreedId(Long breedId);
+
+    Variety findByBreedId(Long breedId);
 }

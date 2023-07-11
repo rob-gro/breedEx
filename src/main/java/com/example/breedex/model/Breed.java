@@ -7,21 +7,40 @@ import java.util.List;
 
 @Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Table(name = "BREED")
 public class Breed {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Long id;
 
+    @Column(name = "breed_name")
     private String breedName;
 
     @OneToMany(mappedBy = "breed")
-    List<Variety> variety;
+    List<Variety> varieties;
+
+    public Breed(Long id, String breedName, List<Variety> varieties) {
+        this.id = id;
+        this.breedName = breedName;
+        this.varieties = varieties;
+    }
 
     public Breed(Long id, String breedName) {
         this.id = id;
         this.breedName = breedName;
     }
+
+    //    public Breed(Long id, String breedName, List<Variety> varieties) {
+//        this.id = id;
+//        this.breedName = breedName;
+//        this.varieties = new ArrayList<>(varieties);
+//
+//        for (Variety variety : this.varieties) {
+//            variety.setBreed(this);
+//        }
+//    }
 
     public Breed() {
     }
@@ -42,12 +61,12 @@ public class Breed {
         this.breedName = breedName;
     }
 
-    public List<Variety> getVariety() {
-        return variety;
+    public List<Variety> getVarieties() {
+        return varieties;
     }
 
-    public void setVariety(List<Variety> variety) {
-        this.variety = variety;
+    public void setVarieties(List<Variety> varieties) {
+        this.varieties = varieties;
     }
 
     @Override
@@ -55,7 +74,7 @@ public class Breed {
         return "Breed{" +
                 "id=" + id +
                 ", breedName='" + breedName + '\'' +
+                ", varieties=" + varieties +
                 '}';
     }
-
 }

@@ -9,18 +9,17 @@ public interface BreedService {
 
     List<Breed> getAllBreeds();
 
-//    List<Breed> findAll();
-
     Breed getBreedById(Long id);
 
     Breed saveBreed(Breed breed);
 
-    void addVarietyToBreed(Long id, Variety variety);
+//    void updateBreed(Breed breed);
 
-    void removeVarietyFromBreed(Long breedId, Long varietyId);
+//    Breed saveBreedAndVariety(Breed breed, Variety variety);
 
-
-//    public Iterable<Breed> save(List<Breed> breeds);
+//    void addVarietyToBreed(Long breedId, Variety variety);
 
     void deleteBreedById(Long id);
+
+//    List<Variety> findByVarietiesOrderById(Long varietyId);
 }

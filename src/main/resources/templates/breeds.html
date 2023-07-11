@@ -33,21 +33,23 @@
                     <td th:text="${breed.breedName}"></td>
 
                     <td>
-                        <span th:if="${#lists.isEmpty(breed.varietyName)}"> - - - </span>
-                        <span th:each="variety, iter : ${breed.varietyName}">
-                            <span th:text="${variety}"></span>
+                        <span th:if="${#lists.isEmpty(breed.varieties)}"> - - - </span>
+                        <span th:each="variety, iter : ${breed.varieties}">
+                            <span th:text="${variety.varietyName}"></span>
                             <span th:unless="${iter.last}">/</span>
                         </span>
                     </td>
 
-
-
                     <td>
 
+                        <a th:href="@{'/breeds/' + ${breed.id} + '/edit'}"
+                           class="btn btn-outline-warning btn-sm">Edit</a>
                         <button type="submit" class="btn btn-outline-info btn-sm">+ New Variety</button>
-                        <button type="button" class="btn btn-outline-warning btn-sm">Edit</button>
+<!--                        <button type="button" class="btn btn-outline-warning btn-sm">Edit</button>-->
 
-                        <a class="btn btn-outline-danger btn-sm"> Delete </a>
+                        <a th:href="@{'/breeds/' + ${breed.id} + '/delete'}"
+                           class="btn btn-outline-danger btn-sm"> Delete </a>
+
                     </td>
                 </tr>
             </th:block>

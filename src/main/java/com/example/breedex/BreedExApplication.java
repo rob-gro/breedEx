@@ -1,19 +1,7 @@
 package com.example.breedex;
 
-import com.example.breedex.model.Breed;
-import com.example.breedex.model.Variety;
-import com.example.breedex.service.BreedService;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 @SpringBootApplication
 public class BreedExApplication {
@@ -21,9 +9,9 @@ public class BreedExApplication {
     public static void main(String[] args) {
         SpringApplication.run(BreedExApplication.class, args);
     }
-}
 
-//
+
+    //
 //    @Bean
 //    CommandLineRunner runner(BreedService breedService) {
 //        return args -> {
@@ -32,10 +20,25 @@ public class BreedExApplication {
 //            TypeReference<List<Breed>> typeReference = new TypeReference<List<Breed>>() {
 //            };
 //            InputStream inputStream = BreedExApplication.class.getResourceAsStream("/json/dogs3.json");
-////            Map<String, List<String>> node = new ObjectMapper().readValue("/json/dogs3.json", new TypeReference<Map<String, List<String>>>() {});
+////            Map<String, List<String>> data = new ObjectMapper().readValue("/json/dogs3.json", new TypeReference<Map<String, List<String>>>() {});
 //            try {
 //                List<Breed> breedsList = mapper.readValue(inputStream, typeReference);
 //
+////                for(Breed breed : breedsList) {
+////                    breed.getVarieties().stream().map(Variety::getVarietyName);
+////                    List<Variety> varietyList = new ArrayList<>();
+////                    Variety variety = new Variety();
+////                    variety.setVarietyName(variety.getVarietyName());
+////                    varietyList.add(variety);
+////                }
+//
+//            } catch (IOException e) {
+//                System.out.println(" **************   some problems: " + e.getMessage() + " ***********");
+//            }
+//            System.out.println("***********   plik JSON wczytany ***********");
+//        };
+//    }
+}
 ///* 1
 //
 //- działa, ALE nie ma wartości z zagnieżdżonego klucza
@@ -48,24 +51,28 @@ public class BreedExApplication {
 //  },
 // */
 //
+
+
 //                for (Breed breed : breedsList) {
+//                        List<Variety> varietyList = new ArrayList<>();
+//        Variety variety = new Variety();
+//        breed.getVarietyName() = ;
+//        varietyList.add(variety);
+//        }
+//        breedService.save(breedsList);
+//        System.out.println(" ******* Breeds Saved! ******* ");
+
+
+
+//                for(Breed breed : breedsList) {
+//                    breed.getVarietyName();
 //                    List<Variety> varietyList = new ArrayList<>();
 //                    Variety variety = new Variety();
-//                    breed.getVarietyName() = ;
+//                    variety.setVarietyName();
 //                    varietyList.add(variety);
-//                }
-//                breedService.save(breedsList);
-//                System.out.println(" ******* Breeds Saved! ******* ");
-//
-////                for(Breed breed : breedsList) {
-////                    breed.getVarietyName();
-////                    List<Variety> varietyList = new ArrayList<>();
-////                    Variety variety = new Variety();
-////                    variety.setVarietyName();
-////                    varietyList.add(variety);
 ////                }
-////                breedService.save();
-////                System.out.println(" ******* Breeds Saved! ******* ");
+//                breedService.save();
+//                System.out.println(" ******* Breeds Saved! ******* ");
 //
 //
 //

@@ -3,20 +3,25 @@ package com.example.breedex.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "VARIETY")
 public class Variety {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Long id;
+
+    @Column(name = "variety_name")
     private String varietyName;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "breed_id", referencedColumnName = "id")
     private Breed breed;
 
-    public Variety(Long id, String varietyName) {
+    public Variety(Long id, String varietyName, Breed breed) {
         this.id = id;
         this.varietyName = varietyName;
+        this.breed = breed;
     }
 
     public Variety() {
@@ -54,5 +59,4 @@ public class Variety {
                 ", breed=" + breed +
                 '}';
     }
-
 }
