@@ -1,4 +1,4 @@
-# breedEx
+# Breeds
 The application displays a list of dog breeds and their variations. The list is loaded and saved to a JSON file, utilizing an in-memory H2 database.
 
 ## Table of contents
@@ -12,8 +12,8 @@ The application displays a list of dog breeds and their variations. The list is 
 
 * ## General info
 * On the main page, you can add, edit, or delete a specific dog breed by clicking the corresponding button in the selected row.
-Upon entering a specific breed, you can edit the main breed name and edit, delete, or add its variations.
-Deleting a breed and all its variations is only possible from the main window.
+* Upon entering a specific breed, you can edit the main breed name and edit, delete, or add its variations.
+* Deleting a breed and all its variations is only possible from the main window.
 
 ## Technologies
 Project is created with:
@@ -25,8 +25,8 @@ Project is created with:
 
 * ## Features
 * On the main page, you can add, edit, or delete a specific dog breed by clicking the corresponding button in the selected row.
-Upon entering a specific breed, you can edit the main breed name and edit, delete, or add its variations.
-Deleting a breed and all its variations is only possible from the main window.
+* Upon entering a specific breed, you can edit the main breed name and edit, delete, or add its variations.
+* Deleting a breed and all its variations is only possible from the main window.
 
 ## Usage
 Would you like to see how it works?
