@@ -1,5 +1,6 @@
 # Breeds
-The application displays a list of dog breeds and their variations. The list is loaded and saved to a JSON file, utilizing an in-memory H2 database.
+The application presents the functionality of the CRUD (Create, Read, Update, Delete) template using the example of a list of dog breeds and their variations.
+
 
 ## Table of contents
 * [General info](#general-info)
@@ -11,9 +12,8 @@ The application displays a list of dog breeds and their variations. The list is 
 * [License](#license)
 
 * ## General info
-* On the main page, you can add, edit, or delete a specific dog breed by clicking the corresponding button in the selected row.
-* Upon entering a specific breed, you can edit the main breed name and edit, delete, or add its variations.
-* Deleting a breed and all its variations is only possible from the main window.
+* The application displays a list of dog breeds and their variations.
+* The list is loaded and saved to a JSON file, utilizing an in-memory H2 database.
 
 ## Technologies
 Project is created with:
@@ -30,7 +30,7 @@ Project is created with:
 
 ## Usage
 Would you like to see how it works?
-You can check out the live application [_HERE_](https://cleaning-service-7a67dcda0c4d.herokuapp.com/).
+You can check out the live application [_HERE_](https://robgro.alwaysdata.net/breeds).
 
 ## Project Status
 coding test
