@@ -1,7 +1,6 @@
 package com.example.breedex.service;
 
 import com.example.breedex.model.Breed;
-import com.example.breedex.model.Variety;
 import com.example.breedex.repository.BreedRepository;
 import org.springframework.stereotype.Service;
 
