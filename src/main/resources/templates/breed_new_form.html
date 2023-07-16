@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
 
-    <!--    added bootstrap  -->
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" type="text/css"/>
     <link rel="stylesheet" href="/style.css"/>
 
@@ -23,11 +22,9 @@
     <form th:action="@{/breeds/save}" th:object="${breed}" method="post"
           style="max-width: 600px; margin: 0 auto;">
 
-        <!--  below verse is a protection against "add" to DB instead of "edit" -->
         <input type="hidden" th:field="*{id}" th:value="${breed.id}"/>
 
         <div class="m-12">
-
             <div class="form-group row">
                 <label class="col-form-label col-sm-4 text-warning">Breed Name</label>
                 <div class="col-sm-8">
@@ -39,12 +36,11 @@
             <div class="form-group row">
                 <label class="col-form-label col-sm-4 text-warning">Variety Name</label>
                 <div class="col-sm-8">
-                    <div th:each="variety : ${breed.varieties}">
-                        <input type="text" th:value="${variety.varietyName}" class="form-control" name="varietyName">
+                    <div th:each="variety : ${breed}">
+                        <input type="text" th:field="${breed.varieties}" class="form-control" name="varietyName">
                     </div>
                 </div>
             </div>
-
 
             <br>
             <div class="text-center p-3">
@@ -52,7 +48,6 @@
             </div>
         </div>
     </form>
-
 </div>
 </body>
 </html>

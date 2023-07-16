@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
 
-    <!--    added bootstrap  -->
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" type="text/css"/>
     <link rel="stylesheet" href="/style.css"/>
 
@@ -14,71 +13,56 @@
 <body>
 <div class="container my-3">
 
-<!--    <div><h1 th:text="'Edit  ' + ${(breed.breedName)} ' details'"></h1></div>-->
-<!--    <div><h1 th:text="Edit Details"></h1></div>-->
-<!--    <div><h1 th:text="Edit ' + ${breedName} +  ' Details'"></h1></div>-->
-
     <div><h1>Edit Breed Name</h1></div>
 
     <div class="container my-1">
         <button type="button" class="nav-button" onclick="window.location.href='/breeds';">Back to Main Page</button>
     </div>
+    <br>
+    <br>
 
-    <form th:action="@{/breeds/save}" th:object="${breed}" method="post"
-          style="max-width: 600px; margin: 0 auto;">
+    <form th:action="@{/breeds/save}" method="post" style="max-width: 600px; margin: 0 auto;">
+        <input type="hidden" name="id" th:value="${breed.id}"/>
 
-        <!--  below verse is a protection against "add" to DB instead of "edit" -->
-        <input type="hidden" th:field="*{id}" th:value="${breed.id}"/>
-<!--        <input type="hidden" th:field="*{breedName}" th:value="${breed.breedName}"/>-->
-<!--        <input  type="hidden" th:field="*{variety}" th:value="${variety.varietyName}" />-->
-
-        <div class="m-12">
-
-<!--            <div class="form-group row">-->
-<!--                <label class="col-form-label col-sm-4 text-warning">Breed Name</label>-->
-<!--                <div class="col-sm-8">-->
-<!--                    <input type="text" th:field="*{breedName}" class="form-control">-->
-<!--                </div>-->
-<!--                <br>-->
-<!--            </div>-->
-
-            <div class="form-group row">
-                <label class="col-form-label col-sm-4 text-warning">Breed Name</label>
-                <div class="col-sm-8">
-                    <input type="text" th:field="*{breedName}" class="form-control" required>
-                </div>
+        <div class="form-group row">
+            <label class="col-form-label col-sm-4 text-warning">Breed Name</label>
+            <div class="col-sm-8">
+                <input type="text" name="breedName" th:field="*{breed.breedName}" class="form-control custom-input">
             </div>
-            <br>
+        </div>
 
-                <br>
-
-            <div class="form-group row">
-                <label class="col-form-label col-sm-4 text-warning">Variety Name</label>
-                <div class="col-sm-8">
-                    <div th:each="variety, iter : ${breed.varieties}">
-                        <input type="text" th:value="${variety.varietyName}" th:field="*{varieties[__${iter.index}__].varietyName}"
-                               class="form-control">
-                    </div>
-                </div>
-            </div>
-
-
-            <!--                <div class="form-group row">-->
-<!--                    <label class="col-form-label col-sm-4 text-warning">Variety Name</label>-->
-<!--                    <div class="col-sm-8">-->
-<!--                        <div th:each="variety : ${breed.varieties}">-->
-<!--                            <input type="text" th:value="${variety.varietyName}" id="varietyName" class="form-control"-->
-<!--                                   name="varietyName">-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-
-                <br>
-                <div class="text-center p-3">
-                    <button type="submit" class="btn btn-outline-info">Save</button>
-                </div>
-            </div>
+        <div class="text-center p-3">
+            <button type="submit" class="btn btn-outline-info">Save</button>
+        </div>
     </form>
+
+    <div class="form-group row">
+        <label class="col-form-label col-sm-4 text-warning">Add Variety</label>
+        <div class="col-sm-4">
+            <form th:action="@{'/breeds/' + ${breed.id} + '/varieties/add'}" method="post" th:object="${variety}">
+                <input type="text" name="varietyName" th:field="*{varietyName}" class="form-control custom-input">
+                <button type="submit" class="nav-button">Add</button>
+            </form>
+        </div>
+    </div>
+    <br>
+
+    <div class="form-group row">
+        <label class="col-form-label col-sm-4 text-warning">Variety Name</label>
+        <div class="col-sm-4">
+            <div th:each="variety, varietyStat : *{breed.varieties}">
+                <div class="input-group mb-2">
+                    <input type="text" th:field="*{breed.varieties[__${varietyStat.index}__]}"
+                           class="form-control custom-input" required>
+                    <form th:action="@{'/breeds/' + ${breed.id} + '/varieties/delete'}" method="post">
+                        <input type="hidden" name="index" th:value="${varietyStat.index}">
+                        <button type="submit" class="del-button">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 </body>
 </html>

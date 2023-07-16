@@ -17,7 +17,6 @@
     border-color: #ffc008;
     padding: 10px;
     margin: 0.7%;
-    /*background-color: rgb(24,28,31);*/
 }
 
 
@@ -110,4 +109,22 @@ h1,h2,h3,h4,h5 {
     margin: 0.7%;
     background-color: #c714a2;
     transition-duration: 0.4s;
+}
+
+
+span {
+    word-break: break-word;
+}
+
+.row-increased-height {
+    height: 15%;
+}
+
+.table td {
+    vertical-align: middle;
+    horiz-align: center;
+}
+
+.table td:nth-child(2) {
+    width: 40%;
 }

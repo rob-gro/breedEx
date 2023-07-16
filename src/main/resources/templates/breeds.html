@@ -20,39 +20,31 @@
 
     <div class="container my-1">
         <table th:border="4" th:cellpadding="10"
-               class="table table-bordered text-center table-dark table-striped text-nowrap">
+               class="table table-bordered text-center table-dark table-striped">
             <thead class="my-auto mx-auto col-form-label text-warning">
             <th>Breed's name</th>
             <th>Variety's Name</th>
             <th>Actions</th>
             </thead>
 
-            <tbody class="text-light">
-            <th:block th:each="breed : ${breedList}">
-                <tr>
-                    <td th:text="${breed.breedName}"></td>
+            <tbody>
+            <tr th:each="breed : ${breedList}" th:classappend="${#lists.size(breed.varieties) > 5} ? 'row-increased-height'">
+                <td th:text="${breed.breedName}"></td>
 
-                    <td>
-                        <span th:if="${#lists.isEmpty(breed.varieties)}"> - - - </span>
-                        <span th:each="variety, iter : ${breed.varieties}">
-                            <span th:text="${variety.varietyName}"></span>
-                            <span th:unless="${iter.last}">/</span>
-                        </span>
-                    </td>
+                <td>
+                    <span th:each="variety, iterStat : ${breed.varieties}">
+                        <span th:text="${variety}"></span>
+                        <span th:if="${!iterStat.last}">/ </span>
+                    </span>
+                </td>
 
-                    <td>
-
-                        <a th:href="@{'/breeds/' + ${breed.id} + '/edit'}"
-                           class="btn btn-outline-warning btn-sm">Edit</a>
-                        <button type="submit" class="btn btn-outline-info btn-sm">+ New Variety</button>
-<!--                        <button type="button" class="btn btn-outline-warning btn-sm">Edit</button>-->
-
-                        <a th:href="@{'/breeds/' + ${breed.id} + '/delete'}"
-                           class="btn btn-outline-danger btn-sm"> Delete </a>
-
-                    </td>
-                </tr>
-            </th:block>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a th:href="@{'/breeds/' + ${breed.id} + '/edit'}" class="btn btn-outline-warning btn-sm me-1">Edit</a>
+                        <a th:href="@{'/breeds/' + ${breed.id} + '/delete'}" class="btn btn-outline-danger btn-sm">Delete</a>
+                    </div>
+                </td>
+            </tr>
             </tbody>
         </table>
     </div>

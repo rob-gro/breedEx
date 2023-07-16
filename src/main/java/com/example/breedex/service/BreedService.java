@@ -1,25 +1,20 @@
 package com.example.breedex.service;
 
 import com.example.breedex.model.Breed;
-import com.example.breedex.model.Variety;
 
 import java.util.List;
 
 public interface BreedService {
 
-    List<Breed> getAllBreeds();
+    Breed createBreed(Long id, String breedName, List<String> varieties);
 
-    Breed getBreedById(Long id);
+    Breed addVariety(Long id, String varietyName);
 
-    Breed saveBreed(Breed breed);
+    List<Breed> findAllBreeds();
 
-//    void updateBreed(Breed breed);
-
-//    Breed saveBreedAndVariety(Breed breed, Variety variety);
-
-//    void addVarietyToBreed(Long breedId, Variety variety);
+    Breed findBreedById(Long id);
 
     void deleteBreedById(Long id);
 
-//    List<Variety> findByVarietiesOrderById(Long varietyId);
+    void deleteVariety(Long breedId, int index);
 }

@@ -1,12 +1,11 @@
 package com.example.breedex.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@JsonIgnoreProperties(ignoreUnknown = true)
 @Table(name = "BREED")
 public class Breed {
 
@@ -18,29 +17,17 @@ public class Breed {
     @Column(name = "breed_name")
     private String breedName;
 
-    @OneToMany(mappedBy = "breed")
-    List<Variety> varieties;
+    List<String> varieties;
 
-    public Breed(Long id, String breedName, List<Variety> varieties) {
+    public Breed(Long id, String breedName, List<String> varieties) {
         this.id = id;
         this.breedName = breedName;
         this.varieties = varieties;
     }
 
     public Breed(Long id, String breedName) {
-        this.id = id;
-        this.breedName = breedName;
+        this(id, breedName, new ArrayList<>());
     }
-
-    //    public Breed(Long id, String breedName, List<Variety> varieties) {
-//        this.id = id;
-//        this.breedName = breedName;
-//        this.varieties = new ArrayList<>(varieties);
-//
-//        for (Variety variety : this.varieties) {
-//            variety.setBreed(this);
-//        }
-//    }
 
     public Breed() {
     }
@@ -61,11 +48,11 @@ public class Breed {
         this.breedName = breedName;
     }
 
-    public List<Variety> getVarieties() {
+    public List<String> getVarieties() {
         return varieties;
     }
 
-    public void setVarieties(List<Variety> varieties) {
+    public void setVarieties(List<String> varieties) {
         this.varieties = varieties;
     }
 
