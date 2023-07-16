@@ -38,8 +38,7 @@ public class BreedController {
     @PostMapping("/breeds/save")
     public String saveBreed(@ModelAttribute Breed breed, Model model) {
         model.addAttribute("breed",
-                breedService.createBreed(breed.getId(),
-                        breed.getBreedName(), breed.getVarieties()));
+                breedService.createBreed(breed.getId(), breed.getBreedName(), breed.getVarieties()));
         return "redirect:/breeds";
     }
 
