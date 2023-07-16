@@ -21,20 +21,17 @@
     <br>
     <br>
 
-    <form th:action="@{/breeds/save}" method="post" style="max-width: 600px; margin: 0 auto;">
-        <input type="hidden" name="id" th:value="${breed.id}"/>
-
         <div class="form-group row">
             <label class="col-form-label col-sm-4 text-warning">Breed Name</label>
-            <div class="col-sm-8">
-                <input type="text" name="breedName" th:field="*{breed.breedName}" class="form-control custom-input">
+            <div class="col-sm-4">
+                <form th:action="@{/breeds/save}" method="post" th:object="${breed}">
+                    <input type="hidden" name="id" th:value="${breed.id}"/>-->
+                    <input type="text" name="breedName" th:field="*{breedName}" class="form-control custom-input">
+                    <button type="submit" class="nav-button">Save</button>
+                </form>
+
             </div>
         </div>
-
-        <div class="text-center p-3">
-            <button type="submit" class="btn btn-outline-info">Save</button>
-        </div>
-    </form>
 
     <div class="form-group row">
         <label class="col-form-label col-sm-4 text-warning">Add Variety</label>

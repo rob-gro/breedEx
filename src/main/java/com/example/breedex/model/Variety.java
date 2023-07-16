@@ -11,7 +11,6 @@ public class Variety {
     }
 
     public Variety() {
-
     }
 
     public Long getBreedId() {

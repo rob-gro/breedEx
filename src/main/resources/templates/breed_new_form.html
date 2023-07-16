@@ -11,14 +11,17 @@
 </head>
 
 <body>
-<div class="container my-3">
+<div class="container my-1">
     <div><h1 class="text-secondary align-content-center">Provide details of the new breed</h1></div>
 
     <div class="container my-1">
         <button type="button" class="nav-button" onclick="window.location.href='/breeds';">Back to Main Page
         </button>
     </div>
+    <br>
+    <br>
 
+    <div class="form-group-row">
     <form th:action="@{/breeds/save}" th:object="${breed}" method="post"
           style="max-width: 600px; margin: 0 auto;">
 
@@ -48,6 +51,8 @@
             </div>
         </div>
     </form>
+    </div>
+
 </div>
 </body>
 </html>
