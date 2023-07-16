@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface BreedService {
 
-    Breed createBreed(Long id, String breedName, List<String> varieties);
+    Breed createBreed(String breedName, List<String> varieties);
 
     Breed addVariety(Long id, String varietyName);
 

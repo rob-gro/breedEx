@@ -1,13 +1,11 @@
 package com.example.breedex.service;
 
 import com.example.breedex.model.Breed;
+import com.example.breedex.model.Variety;
 import com.example.breedex.repository.BreedRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class BreedServiceImpl implements BreedService {
@@ -19,18 +17,10 @@ public class BreedServiceImpl implements BreedService {
     }
 
     @Override
-    public Breed createBreed(Long id, String breedName, List<String> varieties) {
-        Breed breed;
-        Optional<Breed> existingBreed = breedRepository.findById(id);
-        if (existingBreed.isPresent()) {
-            breed = existingBreed.get();
-            breed.setBreedName(breedName);
-        } else {
-            if (varieties == null) {
-                varieties = new ArrayList<>();
-            }
-            breed = new Breed(id, breedName, varieties);
-        }
+    public Breed createBreed(String breedName, List<String> varieties) {
+        Breed breed = new Breed();
+        breed.setBreedName(breedName);
+        breed.setVarieties(Optional.ofNullable(varieties).orElse(Collections.emptyList()));
         return breedRepository.save(breed);
     }
 
