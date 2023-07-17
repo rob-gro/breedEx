@@ -10,12 +10,12 @@
 
 </head>
 
-<body>
+<body class="bg-dark">
 <div class="container my-3">
 
     <div><h1>Edit Breed Name</h1></div>
     <div class="container my-1">
-        <button type="button" class="nav-button" onclick="window.location.href='/breeds';">Back to Main Page</button>
+        <button type="button" class="btn btn-outline-warning" onclick="window.location.href='/breeds';">Back to Main Page</button>
     </div>
     <br>
     <br>
@@ -26,7 +26,7 @@
                 <form th:action="@{/breeds/save}" method="post" th:object="${breed}">
                     <input type="hidden" name="id" th:value="${breed.id}"/>-->
                     <input type="text" name="breedName" th:field="*{breedName}" class="form-control custom-input">
-                    <button type="submit" class="nav-button">Save</button>
+                    <button type="submit" class="btn btn-outline-info">Save</button>
                 </form>
 
             </div>
@@ -37,7 +37,7 @@
         <div class="col-sm-4">
             <form th:action="@{'/breeds/' + ${breed.id} + '/varieties/add'}" method="post" th:object="${variety}">
                 <input type="text" name="varietyName" th:field="*{varietyName}" class="form-control custom-input">
-                <button type="submit" class="nav-button">Add</button>
+                <button type="submit" class="btn btn-outline-info">Add</button>
             </form>
         </div>
     </div>
@@ -52,7 +52,7 @@
                            class="form-control custom-input" required>
                     <form th:action="@{'/breeds/' + ${breed.id} + '/varieties/delete'}" method="post">
                         <input type="hidden" name="index" th:value="${varietyStat.index}">
-                        <button type="submit" class="del-button">Delete</button>
+                        <button type="submit" class="btn btn-outline-danger">Delete</button>
                     </form>
                 </div>
             </div>
